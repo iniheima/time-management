@@ -111,7 +111,7 @@ function updateLockedSelectors(){document.querySelectorAll('.swatch').forEach(g=
 function mobileCanvasHeight(){return Math.max(1060,680*window.innerHeight/window.innerWidth)}
 function mobileToolbarY(){return mobileCanvasHeight()-58}
 function calculateAutoLayout(){
- const font=view.fontScale/100,weekScale=mobileSurface?Math.min(2,2*view.weekScale/100):view.weekScale/100,paletteScale=view.buttonScale/100;
+ const font=view.fontScale/100,weekScale=mobileSurface?Math.min(1.7,1.6*view.weekScale/100):view.weekScale/100,paletteScale=view.buttonScale/100;
  const textBounds=(id,y,size)=>{const text=document.getElementById(id);if(typeof text.getBBox==='function'){const box=text.getBBox();if(box.height>0)return{top:box.y,bottom:box.y+box.height}}return{top:y-size*font*.8,bottom:y+size*font*.2}};
  const blocks=[];
  if(!view.hideWeek){const label=textBounds('template-label',view.weekLabels?122:148,19);let top=Math.min(label.top,166);if(view.weekLabels){const day=document.querySelectorAll('[data-week-label]')[0];let dayTop=153-16*font*.8;if(day&&typeof day.getBBox==='function')dayTop=day.getBBox().y;top=Math.min(top,dayTop)}blocks.push({kind:'week',top,height:(201-top)*weekScale,scale:weekScale})}
